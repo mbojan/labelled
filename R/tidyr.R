@@ -27,8 +27,27 @@ as.list.labelled <- function(x, ...) {
 }
 
 
+#' @rdname tidyr
+#' @details
+#' Unlist and copy attributes from first element
+#' @export
+smart_unlist <- function(x) {
+  res <- unlist(x)
+  all_attrs <- lapply(x, attributes)
+  stopifnot(all_identical(all_attrs))
+  mostattributes(res) <- attributes(x[[1]])
+  res
+}
+
+is_lablist <- function(x) {
+  inherits(x[[1]], 'labelled')
+}
 
 
+unnest2 <- function(data, ...) {
+  mutate_if(data, is_lablist, smart_unlist) %>%
+    unnest(...)
+}
 
 
 
