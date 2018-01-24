@@ -3,10 +3,18 @@
 \name{tidyr}
 \alias{tidyr}
 \alias{as.list.labelled}
+\alias{[.labelled_spss}
 \title{tidyr-related functions}
 \usage{
 \method{as.list}{labelled}(x, ...)
+
+\method{[}{labelled_spss}(x, ...)
 }
 \description{
 tidyr-related functions
+}
+\details{
+`as.list.labelled`
+
+`[` method copies labels, na_values, and na_range
 }
