@@ -25,3 +25,24 @@ as.list.labelled <- function(x, ...) {
   var_label(res) <- var_label(x)
   res
 }
+
+
+
+
+
+
+
+
+
+
+# Utils -------------------------------------------------------------------
+
+all_identical <- function(x, verbose=getOption("verbose", FALSE)) {
+  ch <- vapply(x, function(v) identical(v, x[[1]]), logical(1))
+  if(!verbose) {
+    return(all(ch))
+  } else {
+    message("elements different from 1st: ", paste(which(!ch), collapse=", "))
+    all(ch)
+  }
+}
